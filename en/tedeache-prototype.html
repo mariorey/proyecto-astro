@@ -383,6 +383,33 @@ margin-top: -25px;
             color: var(--gray);
         }
 
+        .flex-center {
+            display: flex;
+            align-content: center;
+            justify-content: center;
+            margin-top: -26px;
+            margin-bottom: 16px;
+        }
+
+        .contact-btn {
+            position: relative;
+            z-index: 1;
+            display: inline-block;
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: var(--black);
+            text-decoration: none;
+            border: 1px solid var(--black);
+            border-radius: 999px;
+            padding: 0.85rem 2.2rem;
+            transition: background 0.25s, color 0.25s;
+        }
+
+        .contact-btn:hover {
+            background: var(--black);
+            color: white;
+        }
+
         .nav-burger {
             display: none;
             background: none;
@@ -694,17 +721,17 @@ margin-top: -25px;
         <li><a href="home.html#projects" class="active">Projects</a></li>
         <li><a href="mailto:lalaburjack@gmail.com">Contact</a></li>
         <li class="mobile-lang">
-            <a href="../tedeache.html">ES</a>
+            <a href="../tedeache-prototype.html">ES</a>
             <span>/</span>
-            <a href="./tedeache.html" class="active">EN</a>
+            <a href="./tedeache-prototype.html" class="active">EN</a>
         </li>
     </ul>
 
     <div class="nav-right">
         <div class="lang-switcher">
-            <a href="../tedeache.html">ES</a>
+            <a href="../tedeache-prototype.html">ES</a>
             <span>/</span>
-            <a href="./tedeache.html" class="active">EN</a>
+            <a href="./tedeache-prototype.html" class="active">EN</a>
         </div>
         <a href="https://www.linkedin.com/in/anaburjack-designerux-ui/" target="_blank">
             <svg width="29" height="28" viewBox="0 0 29 28" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -754,6 +781,11 @@ margin-top: -25px;
         <img src="../files/tedeache/Testing__Tedeache.png" alt="Research">
     </div>
 </div>
+</section>
+<section class="flex-center">
+    <a class="contact-btn" href="./tedeache.html">
+        View Case Study
+    </a>
 </section>
 
 <footer>

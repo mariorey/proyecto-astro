@@ -38,6 +38,14 @@
             background: white;
         }
 
+        .flex-center {
+            display: flex;
+            align-content: center;
+            justify-content: center;
+            margin-top: -26px;
+            margin-bottom: 16px;
+        }
+
         .nav-logo {
             display: flex;
             flex-direction: column;
@@ -374,6 +382,25 @@
             color: var(--black);
         }
 
+        .contact-btn {
+            position: relative;
+            z-index: 1;
+            display: inline-block;
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: var(--black);
+            text-decoration: none;
+            border: 1px solid var(--black);
+            border-radius: 999px;
+            padding: 0.85rem 2.2rem;
+            transition: background 0.25s, color 0.25s;
+        }
+
+        .contact-btn:hover {
+            background: var(--black);
+            color: white;
+        }
+
         .three-col-item p {
             font-size: 0.9rem;
             font-weight: 300;
@@ -692,17 +719,17 @@
         <li><a href="./index.html#projects" class="active">Proyectos</a></li>
         <li><a href="mailto:lalaburjack@gmail.com">Contact</a></li>
         <li class="mobile-lang">
-            <a href="./agape.html" class="active">ES</a>
+            <a href="./agape-prototype.html" class="active">ES</a>
             <span>/</span>
-            <a href="./en/agape.html">EN</a>
+            <a href="./en/agape-prototype.html">EN</a>
         </li>
     </ul>
 
     <div class="nav-right">
         <div class="lang-switcher">
-            <a href="./agape.html" class="active">ES</a>
+            <a href="./agape-prototype.html" class="active">ES</a>
             <span>/</span>
-            <a href="./en/agape.html">EN</a>
+            <a href="./en/agape-prototype.html">EN</a>
         </div>
         <a href="https://www.linkedin.com/in/anaburjack-designerux-ui/" target="_blank">
             <svg width="29" height="28" viewBox="0 0 29 28" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -738,6 +765,11 @@
     <div class="process-visual">
         <img src="./files/ui-agape-4.png" alt="UI Overview Ágape">
     </div>
+</section>
+<section class="flex-center">
+    <a class="contact-btn" href="./agape.html">
+        Ver Case Study
+    </a>
 </section>
 
 <footer>

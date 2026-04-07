@@ -96,6 +96,32 @@
             align-items: center;
             gap: 1.2rem;
         }
+        .flex-center {
+            display: flex;
+            align-content: center;
+            justify-content: center;
+            margin-top: -26px;
+            margin-bottom: 16px;
+        }
+
+        .contact-btn {
+            position: relative;
+            z-index: 1;
+            display: inline-block;
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: var(--black);
+            text-decoration: none;
+            border: 1px solid var(--black);
+            border-radius: 999px;
+            padding: 0.85rem 2.2rem;
+            transition: background 0.25s, color 0.25s;
+        }
+
+        .contact-btn:hover {
+            background: var(--black);
+            color: white;
+        }
 
         .nav-right a svg { transition: transform 0.3s ease; }
         .nav-right a:hover svg { transform: rotate(5deg); }
@@ -693,17 +719,17 @@
         <li><a href="home.html#projects" class="active">Projects</a></li>
         <li><a href="mailto:lalaburjack@gmail.com">Contact</a></li>
         <li class="mobile-lang">
-            <a href="../agape.html">ES</a>
+            <a href="../agape-prototype.html">ES</a>
             <span>/</span>
-            <a href="./agape.html" class="active">EN</a>
+            <a href="./agape-prototype.html" class="active">EN</a>
         </li>
     </ul>
 
     <div class="nav-right">
         <div class="lang-switcher">
-            <a href="../agape.html">ES</a>
+            <a href="../agape-prototype.html">ES</a>
             <span>/</span>
-            <a href="./agape.html" class="active">EN</a>
+            <a href="./agape-prototype.html" class="active">EN</a>
         </div>
         <a href="https://www.linkedin.com/in/anaburjack-designerux-ui/" target="_blank">
             <svg width="29" height="28" viewBox="0 0 29 28" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -739,6 +765,11 @@
     <div class="process-visual">
         <img src="../files/ui-agape-4.png" alt="UI Overview Ágape">
     </div>
+</section>
+<section class="flex-center">
+    <a class="contact-btn" href="./agape.html">
+        View Case Study
+    </a>
 </section>
 
 <footer>

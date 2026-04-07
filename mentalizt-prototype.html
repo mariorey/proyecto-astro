@@ -38,6 +38,33 @@
             background: white;
         }
 
+        .flex-center {
+            display: flex;
+            align-content: center;
+            justify-content: center;
+            margin-top: -26px;
+            margin-bottom: 16px;
+        }
+
+        .contact-btn {
+            position: relative;
+            z-index: 1;
+            display: inline-block;
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: var(--black);
+            text-decoration: none;
+            border: 1px solid var(--black);
+            border-radius: 999px;
+            padding: 0.85rem 2.2rem;
+            transition: background 0.25s, color 0.25s;
+        }
+
+        .contact-btn:hover {
+            background: var(--black);
+            color: white;
+        }
+
         .nav-logo {
             display: flex;
             flex-direction: column;
@@ -702,17 +729,17 @@ margin-top: -25px;
         <li><a href="./index.html#projects" class="active">Proyectos</a></li>
         <li><a href="mailto:lalaburjack@gmail.com">Contact</a></li>
         <li class="mobile-lang">
-            <a href="./mentalizt.html" class="active">ES</a>
+            <a href="./mentalizt-prototype.html" class="active">ES</a>
             <span>/</span>
-            <a href="./en/mentalizt.html">EN</a>
+            <a href="./en/mentalizt-prototype.html">EN</a>
         </li>
     </ul>
 
     <div class="nav-right">
         <div class="lang-switcher">
-            <a href="./mentalizt.html" class="active">ES</a>
+            <a href="./mentalizt-prototype.html" class="active">ES</a>
             <span>/</span>
-            <a href="./en/mentalizt.html">EN</a>
+            <a href="./en/mentalizt-prototype.html">EN</a>
         </div>
         <a href="https://www.linkedin.com/in/anaburjack-designerux-ui/" target="_blank">
             <svg width="29" height="28" viewBox="0 0 29 28" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -747,6 +774,11 @@ margin-top: -25px;
     <div class="project-hero-img">
         <img src="./files/mentalizt/ui-5.png" alt="Tedeache">
     </div>
+</section>
+<section class="flex-center">
+    <a class="contact-btn" href="./mentalizt.html">
+        Ver Case Study
+    </a>
 </section>
 
 <footer>
