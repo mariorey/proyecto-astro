@@ -1,0 +1,78 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout title="Ana Burjack — UX/UI Designer - About me" lang="es">
+    <Nav lang="es" activePage="about" altHref="/en/about-me" />
+
+    <section class="about-hero">
+        <p class="about-text">
+            Diseñadora UX/UI que cuida cada detalle para crear experiencias intuitivas, funcionales y centradas en el usuario.
+        </p>
+        <div class="about-photo">
+            <img src="/files/profile.jpg" alt="Ana Burjack" />
+        </div>
+    </section>
+
+    <section class="about-details">
+        <!-- BIO -->
+        <div class="about-bio-row">
+            <span class="about-label">BIO</span>
+            <div class="about-bio-text">
+                <p>Diseñadora UX/UI con formación en Bellas Artes, siempre apasionada por crear trabajo visualmente atractivo. Pero quería ir más allá de la estética: entender cómo las personas interactúan con lo que diseño. Esa curiosidad me llevó al UX, donde encontré la combinación perfecta de creatividad y resolución de problemas.</p>
+                <p>Cuando no estoy diseñando, me encontrarás explorando nuevos lugares, experimentando en la cocina o disfrutando de la naturaleza. Establecida en Córdoba / Madrid</p>
+            </div>
+        </div>
+
+        <!-- SKILLS + TOOLS -->
+        <div class="about-skills-row">
+            <span class="about-label">SKILLS</span>
+            <div class="about-skills-list">
+                <p>Diseño Visual & Branding</p>
+                <p>Diseño de Interfaz (UI)</p>
+                <p>Diseño de Experiencia (UX)</p>
+                <p>Diseño Responsive</p>
+                <p>User Research</p>
+                <p>Wireframing & Prototipado</p>
+                <p>Arquitectura de la Información</p>
+                <p>Design Thinking & Sprints</p>
+            </div>
+            <span class="about-label">DESIGN TOOLS</span>
+            <div class="about-tools-list">
+                <p>Figma</p>
+                <p>Adobe Illustrator</p>
+                <p>Adobe Photoshop</p>
+                <p>Framer</p>
+            </div>
+        </div>
+
+        <span class="about-label" style="margin-bottom: -4rem">EDUCATION</span>
+        <div class="edu-list">
+            <div class="edu-item">
+                <p class="edu-name">UX/UI Design</p>
+                <p class="edu-place">Bootcamp Neoland (2025)</p>
+            </div>
+            <div class="edu-item">
+                <p class="edu-name">Máster Web Development</p>
+                <p class="edu-place">En curso (2025–2026)</p>
+            </div>
+            <div class="edu-item">
+                <p class="edu-name">Grado en Bellas Artes</p>
+                <p class="edu-place">Universidad de Granada (2021–2026)</p>
+            </div>
+            <a class="edu-btn" target="_blank" href="/files/Ana_Burjack-CV-UX_Designer.pdf">
+                Download Resume
+            </a>
+        </div>
+    </section>
+
+    <section class="contact-section">
+        <p class="contact-sub">¿Hablamos?</p>
+        <h2 class="contact-title">Get in touch</h2>
+        <a class="contact-btn" href="mailto:lalaburjack@gmail.com">Email Me</a>
+    </section>
+
+    <Footer />
+</BaseLayout>

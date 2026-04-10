@@ -1,0 +1,58 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<BaseLayout title="Tedeache Prototype — Ana Burjack" lang="en">
+    <Nav lang="en" activePage="projects" altHref="/tedeache-prototype" />
+
+    <section class="project-hero">
+        <span class="project-hero-tag">Mobile App</span>
+        <h1 class="project-hero-title">Tedeache</h1>
+        <span class="project-hero-subtitle">Support app for people with ADHD</span>
+        <div class="project-hero-img">
+            <img src="/files/tedeache/cover.png" alt="Tedeache" />
+        </div>
+    </section>
+
+    <section class="project-process">
+        <h2 class="process-title">Wireframe</h2>
+        <p class="process-desc">With the information architecture defined, I began the visual ideation phase by creating low-fidelity wireframes. These initial sketches allowed me to explore screen element distribution quickly, focusing solely on structure, navigation, and content hierarchy.</p>
+        <div class="process-visual" style="width: 80%; justify-self:center">
+            <img src="/files/tedeache/wireframe-1-tedeache.png" alt="Wireframe" />
+        </div>
+        <div class="process-visual" style="width: 80%; justify-self:center">
+            <img src="/files/tedeache/wireframe-2-tedeache.png" alt="Wireframe" />
+        </div>
+        <h2 class="process-title">User Interface</h2>
+        <p class="process-desc">With validated wireframes, I advanced to the user interface design, defining Tedeache's visual system: color palette, typography, iconography, components, and interaction patterns. The goal was to create an accessible interface prioritizing clarity and reduction of visual overload.</p>
+        <div class="process-visual" style="width: 80%; justify-self:center">
+            <img src="/files/tedeache/ui-tedeache-1.png" alt="UI Tedeache" />
+        </div>
+        <div class="process-visual" style="width: 80%; justify-self:center">
+            <img src="/files/tedeache/ui-tedeache-2.png" alt="UI Tedeache" />
+        </div>
+        <div class="process-visual" style="width: 80%; justify-self:center">
+            <img src="/files/tedeache/ui-tedeache-3.png" alt="UI Tedeache" />
+        </div>
+    </section>
+
+    <section class="project-section">
+        <div class="project-section-header">
+            <h2 class="project-section-title">User Testing</h2>
+        </div>
+        <div class="project-section-body1">
+            <p class="project-quote">"I felt calm, motivated"</p>
+            <div class="project-section-img">
+                <img src="/files/tedeache/Testing__Tedeache.png" alt="User Testing" />
+            </div>
+        </div>
+    </section>
+
+    <section class="flex-center">
+        <a class="contact-btn" href="/en/tedeache-prototype">View Case Study</a>
+    </section>
+
+    <Footer />
+</BaseLayout>

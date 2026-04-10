@@ -1,0 +1,40 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<BaseLayout title="Ágape Prototype — Ana Burjack" lang="en">
+    <Nav lang="en" activePage="projects" altHref="/agape-prototype" />
+
+    <section class="project-hero">
+        <span class="project-hero-tag">Web Design</span>
+        <h1 class="project-hero-title">Ágape</h1>
+        <span class="project-hero-subtitle">Web for supermarket chains</span>
+        <div class="project-hero-img">
+            <img src="/files/agape/cover-agape.png" alt="Ágape" />
+        </div>
+    </section>
+
+    <section class="project-process">
+        <h2 class="process-title">User Interface</h2>
+        <div class="process-visual">
+            <img src="/files/ui-agape-1.png" alt="UI Overview Ágape" />
+        </div>
+        <div class="process-visual">
+            <img src="/files/ui-agape-2.png" alt="UI Overview Ágape" />
+        </div>
+        <div class="process-visual">
+            <img src="/files/ui-agape-3.png" alt="UI Overview Ágape" />
+        </div>
+        <div class="process-visual">
+            <img src="/files/ui-agape-4.png" alt="UI Overview Ágape" />
+        </div>
+    </section>
+
+    <section class="flex-center">
+        <a class="contact-btn" href="/en/agape">View Case Study</a>
+    </section>
+
+    <Footer />
+</BaseLayout>
