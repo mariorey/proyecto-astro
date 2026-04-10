@@ -1,6 +1,6 @@
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-    site: 'https://anaburjack.es',
-    trailingSlash: 'never',
+    site: 'https://mariorey.github.io',
+    base: 'proyecto-astro',
 });
