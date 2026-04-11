@@ -13,13 +13,13 @@ const links = isES
     ? {
         home: '/proyecto-astro',
         about: '/proyecto-astro/about-me',
-        projects: '/proyecto-astro/#projects',
+        projects: '/proyecto-astro/projects',
         contact: 'mailto:lalaburjack@gmail.com',
     }
     : {
         home: '/proyecto-astro/en',
         about: '/proyecto-astro/en/about-me',
-        projects: '/proyecto-astro/en#projects',
+        projects: '/proyecto-astro/en/projects',
         contact: 'mailto:lalaburjack@gmail.com',
     };
 
@@ -27,7 +27,7 @@ const esHref = isES ? Astro.url.pathname : altHref;
 const enHref = isES ? altHref : Astro.url.pathname;
 ---
 
-<nav>
+<nav transition:name="site-nav">
     <button
             class="nav-burger"
             aria-label={isES ? 'Abrir menú' : 'Open menu'}
@@ -79,12 +79,60 @@ const enHref = isES ? altHref : Astro.url.pathname;
 </nav>
 
 <script>
-    const burger = document.getElementById('nav-burger-btn');
-    const menu = document.getElementById('nav-menu');
-    if (burger && menu) {
-        burger.addEventListener('click', () => {
-            burger.classList.toggle('active');
-            menu.classList.toggle('open');
-        });
+    /* ── initNav ───────────────────────────────────────────────────
+       Wraps burger + scramble setup so it can be safely re-run after
+       every View Transitions navigation (nav DOM is replaced each
+       time, so old event listeners are lost).
+       data-ready guard prevents duplicate listeners on first load
+       if both the direct call and astro:page-load fire for the same
+       nav node.                                                      */
+    function initNav() {
+        /* Burger */
+        const burger = document.getElementById('nav-burger-btn') as HTMLElement | null;
+        const menu   = document.getElementById('nav-menu')       as HTMLElement | null;
+        if (burger && menu && !burger.dataset.ready) {
+            burger.dataset.ready = '1';
+            burger.addEventListener('click', () => {
+                burger.classList.toggle('active');
+                menu.classList.toggle('open');
+            });
+        }
+
+        /* Logo scramble */
+        const nameEl = document.querySelector<HTMLElement>('.nav-logo-name');
+        if (nameEl && !nameEl.dataset.ready) {
+            nameEl.dataset.ready = '1';
+            const original = nameEl.textContent ?? '';
+            const pool = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            let timer: ReturnType<typeof setInterval> | null = null;
+
+            function scramble() {
+                if (timer) clearInterval(timer);
+                let frame = 0;
+                const total = 20;
+                timer = setInterval(() => {
+                    frame++;
+                    const progress = frame / total;
+                    nameEl.textContent = original
+                        .split('')
+                        .map((ch, i) => {
+                            if (ch === ' ') return ' ';
+                            return i / original.length < progress
+                                ? ch
+                                : pool[Math.floor(Math.random() * pool.length)];
+                        })
+                        .join('');
+                    if (frame >= total) { clearInterval(timer!); nameEl.textContent = original; }
+                }, 16);
+            }
+
+            function reset() { if (timer) clearInterval(timer); nameEl.textContent = original; }
+
+            nameEl.closest('a')?.addEventListener('mouseenter', scramble);
+            nameEl.closest('a')?.addEventListener('mouseleave', reset);
+        }
     }
+
+    initNav();
+    document.addEventListener('astro:page-load', initNav);
 </script>
