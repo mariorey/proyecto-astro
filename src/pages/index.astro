@@ -26,8 +26,8 @@ import Footer from '../components/Footer.astro';
         <div class="hero-content">
             <span class="hero-label">Based in Córdoba · Madrid</span>
             <h1 class="hero-title">
-                ux/ui<br />
-                <em>designer</em>
+                <span class="hero-line-1">ux/ui</span><br />
+                <em class="hero-line-2">designer</em>
             </h1>
             <p class="hero-sub">
                 enfocada en <strong>crear experiencias</strong> digitales <strong>accesibles e inclusivas</strong> que conecten estrategia, estética y usabilidad.
@@ -45,12 +45,12 @@ import Footer from '../components/Footer.astro';
 
     <!-- PROJECTS -->
     <div id="projects" class="project-row">
-        <a href="/proyecto-astro/tedeache">
+        <a href="/proyecto-astro/tedeache" data-reveal="img">
             <div class="project-img">
                 <img src="/proyecto-astro/files/tedeache/cover.png" class="img-placeholder" alt="Tedeache" />
             </div>
         </a>
-        <div class="project-info">
+        <div class="project-info" data-reveal="info">
             <div class="project-info-wrapper">
                 <span class="project-tag">Aplicación Móvil</span>
                 <a href="/proyecto-astro/tedeache"><h2 class="project-title">Tedeache</h2></a>
@@ -62,12 +62,12 @@ import Footer from '../components/Footer.astro';
     </div>
 
     <div class="project-row reverse">
-        <a href="/proyecto-astro/agape">
+        <a href="/proyecto-astro/agape" data-reveal="img">
             <div class="project-img">
                 <img src="/proyecto-astro/files/agape/cover-agape.png" class="img-placeholder" alt="Ágape" />
             </div>
         </a>
-        <div class="project-info">
+        <div class="project-info" data-reveal="info">
             <div class="project-info-wrapper">
                 <span class="project-tag">Diseño Web</span>
                 <a href="/proyecto-astro/agape"><h2 class="project-title">Ágape</h2></a>
@@ -79,12 +79,12 @@ import Footer from '../components/Footer.astro';
     </div>
 
     <div class="project-row">
-        <a href="/proyecto-astro/mentalizt">
+        <a href="/proyecto-astro/mentalizt" data-reveal="img">
             <div class="project-img">
                 <img src="/proyecto-astro/files/mentalizt/cover-2.jpg" class="img-placeholder" alt="MentaliZT" />
             </div>
         </a>
-        <div class="project-info">
+        <div class="project-info" data-reveal="info">
             <div class="project-info-wrapper">
                 <span class="project-tag">Aplicación Móvil</span>
                 <a href="/proyecto-astro/mentalizt"><h2 class="project-title">MentaliZT</h2></a>
