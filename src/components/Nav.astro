@@ -27,7 +27,7 @@ const esHref = isES ? Astro.url.pathname : altHref;
 const enHref = isES ? altHref : Astro.url.pathname;
 ---
 
-<nav>
+<nav transition:name="site-nav">
     <button
             class="nav-burger"
             aria-label={isES ? 'Abrir menú' : 'Open menu'}

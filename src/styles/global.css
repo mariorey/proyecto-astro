@@ -394,6 +394,35 @@ footer .footer-inner > a:hover { transform: rotate(10deg); }
 }
 
 /* ─────────────────────────────
+   PAGE TRANSITIONS (View Transitions API)
+───────────────────────────── */
+
+/* Old page: fade out + drifts up slightly */
+@keyframes pageOut {
+    to { opacity: 0; transform: translateY(-10px); }
+}
+
+/* New page: fades in + rises from slightly below */
+@keyframes pageIn {
+    from { opacity: 0; transform: translateY(16px); }
+}
+
+::view-transition-old(root) {
+    animation: 180ms ease-in pageOut;
+}
+
+::view-transition-new(root) {
+    animation: 420ms cubic-bezier(0.16, 1, 0.3, 1) pageIn;
+}
+
+/* Nav is a named element — zero animation so it stays put */
+::view-transition-old(site-nav),
+::view-transition-new(site-nav) {
+    animation: none;
+    mix-blend-mode: normal;
+}
+
+/* ─────────────────────────────
    SCROLL PROGRESS BAR
 ───────────────────────────── */
 
@@ -1398,6 +1427,9 @@ a:hover .project-img::after {
 @media (prefers-reduced-motion: reduce) {
     nav { transition: none; }
     #progress-bar { transition: none; }
+
+    ::view-transition-old(root),
+    ::view-transition-new(root) { animation: none; }
 
     .hero-label,
     .hero-line-1,
