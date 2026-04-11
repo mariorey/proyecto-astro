@@ -29,8 +29,14 @@ const {
     />
 </head>
 <body>
+<!-- Custom cursor -->
+<div id="cursor-dot"  aria-hidden="true"></div>
+<div id="cursor-ring" aria-hidden="true"></div>
+
 <slot />
+
 <script>
+    /* ── Scroll reveal ── */
     const io = new IntersectionObserver(
         entries => entries.forEach(e => {
             if (e.isIntersecting) {
@@ -41,6 +47,53 @@ const {
         { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
     );
     document.querySelectorAll('[data-reveal]').forEach(el => io.observe(el));
+
+    /* ── Custom cursor (fine-pointer devices only) ── */
+    const dot  = document.getElementById('cursor-dot');
+    const ring = document.getElementById('cursor-ring');
+
+    if (dot && ring && window.matchMedia('(pointer: fine)').matches) {
+        document.body.classList.add('custom-cursor');
+        /* Start hidden — appear on first real mouse move */
+        dot.classList.add('cursor-hidden');
+        ring.classList.add('cursor-hidden');
+
+        let mouseX = 0, mouseY = 0;
+        let ringX  = 0, ringY  = 0;
+
+        /* Dot snaps instantly; ring lags behind via lerp */
+        document.addEventListener('mousemove', e => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            dot.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
+            dot.classList.remove('cursor-hidden');
+            ring.classList.remove('cursor-hidden');
+        });
+
+        document.addEventListener('mouseleave', () => {
+            dot.classList.add('cursor-hidden');
+            ring.classList.add('cursor-hidden');
+        });
+
+        /* RAF loop — ring follows with smooth lag */
+        function lerp(a: number, b: number, t: number) { return a + (b - a) * t; }
+        (function tick() {
+            ringX = lerp(ringX, mouseX, 0.1);
+            ringY = lerp(ringY, mouseY, 0.1);
+            ring.style.transform = `translate(${ringX}px, ${ringY}px)`;
+            requestAnimationFrame(tick);
+        })();
+
+        /* Hover state: ring morphs on interactive elements */
+        document.querySelectorAll('a, button').forEach(el => {
+            el.addEventListener('mouseenter', () => ring.classList.add('cursor-hover'));
+            el.addEventListener('mouseleave', () => ring.classList.remove('cursor-hover'));
+        });
+
+        /* Click feedback on the dot */
+        document.addEventListener('mousedown', () => dot.classList.add('cursor-click'));
+        document.addEventListener('mouseup',   () => dot.classList.remove('cursor-click'));
+    }
 </script>
 </body>
 </html>

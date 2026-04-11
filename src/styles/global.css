@@ -388,6 +388,69 @@ footer .footer-inner > a:hover { transform: rotate(10deg); }
 }
 
 /* ─────────────────────────────
+   CUSTOM CURSOR
+───────────────────────────── */
+
+/* Hide native cursor only when custom one is active */
+.custom-cursor,
+.custom-cursor * { cursor: none !important; }
+
+#cursor-dot,
+#cursor-ring {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 10000;
+    border-radius: 50%;
+    /* translate is set via JS — using translate() not top/left avoids layout recalc */
+    will-change: transform;
+}
+
+#cursor-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--black);
+    /* Offset so the visual center aligns with the pointer */
+    margin: -4px 0 0 -4px;
+    transition: scale 0.15s ease, opacity 0.3s ease;
+}
+
+#cursor-ring {
+    width: 38px;
+    height: 38px;
+    border: 1.5px solid var(--black);
+    margin: -19px 0 0 -19px;
+    opacity: 0.7;
+    transition:
+        width  0.4s cubic-bezier(0.16, 1, 0.3, 1),
+        height 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+        margin 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+        background 0.3s ease,
+        opacity 0.3s ease;
+}
+
+/* Ring expands + fills when hovering interactive elements */
+#cursor-ring.cursor-hover {
+    width: 60px;
+    height: 60px;
+    margin: -30px 0 0 -30px;
+    background: rgba(17, 16, 16, 0.07);
+    opacity: 1;
+}
+
+/* Dot shrinks on click for tactile feedback */
+#cursor-dot.cursor-click {
+    scale: 0.5;
+}
+
+/* Fade out when cursor leaves the window */
+#cursor-dot.cursor-hidden,
+#cursor-ring.cursor-hidden {
+    opacity: 0;
+}
+
+/* ─────────────────────────────
    HERO — ENTRANCE ANIMATIONS
 ───────────────────────────── */
 
