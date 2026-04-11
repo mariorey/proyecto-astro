@@ -46,7 +46,7 @@ import Footer from '../../components/Footer.astro';
     <!-- PROJECTS -->
     <div id="projects" class="project-row">
         <a href="/proyecto-astro/en/tedeache-prototype" data-reveal="img">
-            <div class="project-img">
+            <div class="project-img" data-overlay="View Case Study →">
                 <img src="/proyecto-astro/files/tedeache/cover.png" class="img-placeholder" alt="Tedeache" />
             </div>
         </a>
@@ -63,7 +63,7 @@ import Footer from '../../components/Footer.astro';
 
     <div class="project-row reverse">
         <a href="/proyecto-astro/en/agape" data-reveal="img">
-            <div class="project-img">
+            <div class="project-img" data-overlay="View Case Study →">
                 <img src="/proyecto-astro/files/agape/cover-agape.png" class="img-placeholder" alt="Ágape" />
             </div>
         </a>
@@ -80,7 +80,7 @@ import Footer from '../../components/Footer.astro';
 
     <div class="project-row">
         <a href="/proyecto-astro/en/mentalizt" data-reveal="img">
-            <div class="project-img">
+            <div class="project-img" data-overlay="View Case Study →">
                 <img src="/proyecto-astro/files/mentalizt/cover-2.jpg" class="img-placeholder" alt="MentaliZT" />
             </div>
         </a>
@@ -94,6 +94,16 @@ import Footer from '../../components/Footer.astro';
             <a class="project-link-2" href="/proyecto-astro/en/mentalizt-prototype">View Prototypes</a>
         </div>
     </div>
+
+    <!-- ABOUT TEASER -->
+    <section class="about-teaser" data-reveal>
+        <img src="/proyecto-astro/files/profile.jpg" class="about-teaser-photo" alt="Ana Burjack" />
+        <div class="about-teaser-body">
+            <span class="about-teaser-name">Ana Burjack</span>
+            <p class="about-teaser-bio">UX/UI designer with a Fine Arts background, passionate about creating accessible digital experiences that connect strategy, aesthetics and usability.</p>
+            <a class="about-teaser-link" href="/proyecto-astro/en/about-me">About me →</a>
+        </div>
+    </section>
 
     <Footer />
 </BaseLayout>

@@ -29,6 +29,9 @@ const {
     />
 </head>
 <body>
+<!-- Scroll progress bar -->
+<div id="progress-bar" aria-hidden="true"></div>
+
 <!-- Custom cursor -->
 <div id="cursor" aria-hidden="true"></div>
 
@@ -47,6 +50,16 @@ const {
     );
     document.querySelectorAll('[data-reveal]').forEach(el => io.observe(el));
 
+    /* ── Scroll progress bar + nav scroll state (single listener) ── */
+    const bar = document.getElementById('progress-bar');
+    const nav = document.querySelector('nav');
+
+    window.addEventListener('scroll', () => {
+        const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+        if (bar) bar.style.transform = `scaleX(${scrollTop / (scrollHeight - clientHeight)})`;
+        if (nav) nav.classList.toggle('scrolled', scrollTop > 80);
+    }, { passive: true });
+
     /* ── Custom cursor (fine-pointer devices only) ── */
     const cursor = document.getElementById('cursor');
 
@@ -54,7 +67,6 @@ const {
         document.body.classList.add('custom-cursor');
         cursor.classList.add('cursor-hidden');
 
-        /* Follows the pointer instantly — no lag */
         document.addEventListener('mousemove', e => {
             cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
             cursor.classList.remove('cursor-hidden');
@@ -62,13 +74,11 @@ const {
 
         document.addEventListener('mouseleave', () => cursor.classList.add('cursor-hidden'));
 
-        /* Scale up on interactive elements */
         document.querySelectorAll('a, button').forEach(el => {
             el.addEventListener('mouseenter', () => cursor.classList.add('cursor-hover'));
             el.addEventListener('mouseleave', () => cursor.classList.remove('cursor-hover'));
         });
 
-        /* Squeeze on click */
         document.addEventListener('mousedown', () => cursor.classList.add('cursor-click'));
         document.addEventListener('mouseup',   () => cursor.classList.remove('cursor-click'));
     }
