@@ -57,12 +57,7 @@ nav.scrolled {
     letter-spacing: 0.01em;
 }
 
-.nav-logo-role {
-    font-size: 0.8rem;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--gray);
-}
+
 
 .nav-center {
     display: flex;
@@ -673,6 +668,141 @@ a:hover .project-img::after {
 .project-info a { color: inherit; text-decoration: none; }
 
 .project-info-wrapper { display: flex; flex-direction: column; }
+
+/* ─────────────────────────────
+   PROJECTS PAGE
+───────────────────────────── */
+
+.projects-header {
+    padding: 11rem 8rem 3.5rem;
+    border-bottom: 1px solid var(--mid);
+}
+
+.projects-header-top {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 0.6rem;
+}
+
+.projects-header-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(4rem, 10vw, 11rem);
+    font-weight: 900;
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+}
+
+.projects-header-count {
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    color: var(--gray);
+    padding-bottom: 1.4rem;
+}
+
+.projects-header-sub {
+    font-size: 0.68rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gray);
+}
+
+/* Project list rows */
+.project-card {
+    display: grid;
+    grid-template-columns: 80px 1fr 250px;
+    gap: 3rem;
+    align-items: center;
+    padding: 3rem 8rem;
+    border-bottom: 1px solid var(--mid);
+    text-decoration: none;
+    color: var(--black);
+    background: white;
+    transition: background 0.5s ease;
+}
+
+.project-card:hover { background: var(--cream); }
+
+.project-card-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    color: rgba(17, 16, 16, 0.1);
+    user-select: none;
+    transition: color 0.45s ease;
+}
+
+.project-card:hover .project-card-num { color: var(--black); }
+
+.project-card-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+}
+
+.project-card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 4vw, 3.5rem);
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.project-card:hover .project-card-title { transform: translateX(10px); }
+
+.project-card-desc {
+    font-size: 0.88rem;
+    font-weight: 300;
+    line-height: 1.75;
+    color: var(--gray);
+    max-width: 44ch;
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.4s ease 0.07s, transform 0.4s ease 0.07s;
+}
+
+.project-card:hover .project-card-desc {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.project-card-img-wrap {
+    width: 250px;
+    height: 155px;
+    overflow: hidden;
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+
+.project-card-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.08);
+    transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.project-card:hover .project-card-img-wrap img { transform: scale(1); }
+
+/* ─────────────────────────────
+   NAV LOGO — HOVER ROLE FADE
+───────────────────────────── */
+
+.nav-logo-role {
+    font-size: 0.8rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gray);
+    transition: opacity 0.25s ease, letter-spacing 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-logo:hover .nav-logo-role {
+    opacity: 0.35;
+    letter-spacing: 0.32em;
+}
 
 /* ─────────────────────────────
    HOME — ABOUT TEASER
@@ -1371,6 +1501,27 @@ a:hover .project-img::after {
         padding: 3rem 1.5rem;
     }
     .project-row.reverse { direction: ltr; }
+
+    /* Projects page */
+    .projects-header { padding: 8rem 1.5rem 2.5rem; }
+    .projects-header-title { font-size: clamp(3rem, 13vw, 5rem); }
+
+    .project-card {
+        grid-template-columns: 44px 1fr;
+        gap: 1rem 1.2rem;
+        padding: 2rem 1.5rem;
+    }
+
+    .project-card-img-wrap { display: none; }
+
+    .project-card-desc {
+        opacity: 1;
+        transform: none;
+    }
+
+    .project-card:hover .project-card-title { transform: none; }
+
+    .project-card-num { font-size: 2rem; }
 
     /* About teaser */
     .about-teaser {

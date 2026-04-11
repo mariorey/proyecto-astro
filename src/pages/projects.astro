@@ -1,0 +1,57 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout title="Proyectos — Ana Burjack" lang="es">
+    <Nav lang="es" activePage="projects" altHref="/proyecto-astro/en/projects" />
+
+    <section class="projects-header">
+        <div class="projects-header-top">
+            <h1 class="projects-header-title"><em>Proyectos</em></h1>
+            <span class="projects-header-count">( 3 )</span>
+        </div>
+        <p class="projects-header-sub">Selected work &middot; 2024&ndash;2025</p>
+    </section>
+
+    <div class="projects-list">
+        <a class="project-card" href="/proyecto-astro/tedeache" data-reveal>
+            <span class="project-card-num">01</span>
+            <div class="project-card-info">
+                <span class="project-tag">Aplicación Móvil</span>
+                <h2 class="project-card-title">Tedeache</h2>
+                <p class="project-card-desc">Aplicación orientada a mejorar la rutina de personas con TDAH, ayudándolas a organizarse, reducir la procrastinación y gestionar distracciones digitales.</p>
+            </div>
+            <div class="project-card-img-wrap">
+                <img src="/proyecto-astro/files/tedeache/cover.png" alt="Tedeache" transition:name="cover-tedeache" />
+            </div>
+        </a>
+
+        <a class="project-card" href="/proyecto-astro/agape" data-reveal>
+            <span class="project-card-num">02</span>
+            <div class="project-card-info">
+                <span class="project-tag">Diseño Web</span>
+                <h2 class="project-card-title">Ágape</h2>
+                <p class="project-card-desc">Diseño de una página web para un supermercado ficticio con funcionalidades innovadoras enfocadas en la usabilidad y la experiencia de compra online.</p>
+            </div>
+            <div class="project-card-img-wrap">
+                <img src="/proyecto-astro/files/agape/cover-agape.png" alt="Ágape" transition:name="cover-agape" />
+            </div>
+        </a>
+
+        <a class="project-card" href="/proyecto-astro/mentalizt" data-reveal>
+            <span class="project-card-num">03</span>
+            <div class="project-card-info">
+                <span class="project-tag">Aplicación Móvil</span>
+                <h2 class="project-card-title">MentaliZT</h2>
+                <p class="project-card-desc">Aplicación orientada a mejorar la salud mental y reducir los efectos del estrés, combinando herramientas de mindfulness y gestión emocional.</p>
+            </div>
+            <div class="project-card-img-wrap">
+                <img src="/proyecto-astro/files/mentalizt/cover.png" alt="MentaliZT" transition:name="cover-mentalizt" />
+            </div>
+        </a>
+    </div>
+
+    <Footer />
+</BaseLayout>
