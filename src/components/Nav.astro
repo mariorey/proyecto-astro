@@ -79,56 +79,60 @@ const enHref = isES ? altHref : Astro.url.pathname;
 </nav>
 
 <script>
-    /* ── Burger menu ── */
-    const burger = document.getElementById('nav-burger-btn');
-    const menu = document.getElementById('nav-menu');
-    if (burger && menu) {
-        burger.addEventListener('click', () => {
-            burger.classList.toggle('active');
-            menu.classList.toggle('open');
-        });
-    }
-
-    /* ── Logo name scramble ── */
-    const nameEl = document.querySelector<HTMLElement>('.nav-logo-name');
-    if (nameEl) {
-        const original = nameEl.textContent ?? '';
-        const pool = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        let timer: ReturnType<typeof setInterval> | null = null;
-
-        function scramble() {
-            if (timer) clearInterval(timer);
-            let frame = 0;
-            const total = 20; // ~320 ms at 60 fps
-
-            timer = setInterval(() => {
-                frame++;
-                const progress = frame / total;
-
-                nameEl.textContent = original
-                    .split('')
-                    .map((ch, i) => {
-                        if (ch === ' ') return ' ';
-                        // resolve left-to-right as progress grows
-                        return i / original.length < progress
-                            ? ch
-                            : pool[Math.floor(Math.random() * pool.length)];
-                    })
-                    .join('');
-
-                if (frame >= total) {
-                    clearInterval(timer!);
-                    nameEl.textContent = original;
-                }
-            }, 16);
+    /* ── initNav ───────────────────────────────────────────────────
+       Wraps burger + scramble setup so it can be safely re-run after
+       every View Transitions navigation (nav DOM is replaced each
+       time, so old event listeners are lost).
+       data-ready guard prevents duplicate listeners on first load
+       if both the direct call and astro:page-load fire for the same
+       nav node.                                                      */
+    function initNav() {
+        /* Burger */
+        const burger = document.getElementById('nav-burger-btn') as HTMLElement | null;
+        const menu   = document.getElementById('nav-menu')       as HTMLElement | null;
+        if (burger && menu && !burger.dataset.ready) {
+            burger.dataset.ready = '1';
+            burger.addEventListener('click', () => {
+                burger.classList.toggle('active');
+                menu.classList.toggle('open');
+            });
         }
 
-        function reset() {
-            if (timer) clearInterval(timer);
-            nameEl.textContent = original;
-        }
+        /* Logo scramble */
+        const nameEl = document.querySelector<HTMLElement>('.nav-logo-name');
+        if (nameEl && !nameEl.dataset.ready) {
+            nameEl.dataset.ready = '1';
+            const original = nameEl.textContent ?? '';
+            const pool = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            let timer: ReturnType<typeof setInterval> | null = null;
 
-        nameEl.closest('a')?.addEventListener('mouseenter', scramble);
-        nameEl.closest('a')?.addEventListener('mouseleave', reset);
+            function scramble() {
+                if (timer) clearInterval(timer);
+                let frame = 0;
+                const total = 20;
+                timer = setInterval(() => {
+                    frame++;
+                    const progress = frame / total;
+                    nameEl.textContent = original
+                        .split('')
+                        .map((ch, i) => {
+                            if (ch === ' ') return ' ';
+                            return i / original.length < progress
+                                ? ch
+                                : pool[Math.floor(Math.random() * pool.length)];
+                        })
+                        .join('');
+                    if (frame >= total) { clearInterval(timer!); nameEl.textContent = original; }
+                }, 16);
+            }
+
+            function reset() { if (timer) clearInterval(timer); nameEl.textContent = original; }
+
+            nameEl.closest('a')?.addEventListener('mouseenter', scramble);
+            nameEl.closest('a')?.addEventListener('mouseleave', reset);
+        }
     }
+
+    initNav();
+    document.addEventListener('astro:page-load', initNav);
 </script>

@@ -50,9 +50,10 @@ const {
     }, { passive: true });
 
     /* ── Scroll reveal ─────────────────────────────────────────────
-       astro:page-load fires on first load AND after every View
-       Transitions swap, so new [data-reveal] elements are always
-       registered even when navigating without a full page reload.  */
+       Called directly AND via astro:page-load.
+       Direct call guards against the race condition where the event
+       fires before this module finishes registering its listener.
+       The event call handles every subsequent View Transitions swap. */
     function initReveal() {
         const io = new IntersectionObserver(
             entries => entries.forEach(e => {
@@ -66,6 +67,7 @@ const {
         document.querySelectorAll('[data-reveal]').forEach(el => io.observe(el));
     }
 
+    initReveal();
     document.addEventListener('astro:page-load', initReveal);
 </script>
 </body>
