@@ -410,49 +410,6 @@ footer .footer-inner > a:hover { transform: rotate(10deg); }
     pointer-events: none;
 }
 
-/* ─────────────────────────────
-   CUSTOM CURSOR
-───────────────────────────── */
-
-/* Hide native cursor only when custom one is active */
-.custom-cursor,
-.custom-cursor * { cursor: none !important; }
-
-#cursor {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 22px;
-    height: 22px;
-    /* Center on pointer */
-    margin: -11px 0 0 -11px;
-    background: white;
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 10000;
-    will-change: transform;
-    /* mix-blend-mode: difference inverts whatever is underneath —
-       appears black on white, white on dark backgrounds, automatically */
-    mix-blend-mode: difference;
-    transition:
-        scale  0.35s cubic-bezier(0.16, 1, 0.3, 1),
-        opacity 0.3s ease;
-}
-
-/* Grows smoothly when hovering links/buttons */
-#cursor.cursor-hover {
-    scale: 2.8;
-}
-
-/* Quick squeeze on click */
-#cursor.cursor-click {
-    scale: 0.7;
-}
-
-/* Invisible until first mousemove */
-#cursor.cursor-hidden {
-    opacity: 0;
-}
 
 /* ─────────────────────────────
    HERO — ENTRANCE ANIMATIONS

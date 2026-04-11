@@ -32,9 +32,6 @@ const {
 <!-- Scroll progress bar -->
 <div id="progress-bar" aria-hidden="true"></div>
 
-<!-- Custom cursor -->
-<div id="cursor" aria-hidden="true"></div>
-
 <slot />
 
 <script>
@@ -60,28 +57,6 @@ const {
         if (nav) nav.classList.toggle('scrolled', scrollTop > 80);
     }, { passive: true });
 
-    /* ── Custom cursor (fine-pointer devices only) ── */
-    const cursor = document.getElementById('cursor');
-
-    if (cursor && window.matchMedia('(pointer: fine)').matches) {
-        document.body.classList.add('custom-cursor');
-        cursor.classList.add('cursor-hidden');
-
-        document.addEventListener('mousemove', e => {
-            cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
-            cursor.classList.remove('cursor-hidden');
-        });
-
-        document.addEventListener('mouseleave', () => cursor.classList.add('cursor-hidden'));
-
-        document.querySelectorAll('a, button').forEach(el => {
-            el.addEventListener('mouseenter', () => cursor.classList.add('cursor-hover'));
-            el.addEventListener('mouseleave', () => cursor.classList.remove('cursor-hover'));
-        });
-
-        document.addEventListener('mousedown', () => cursor.classList.add('cursor-click'));
-        document.addEventListener('mouseup',   () => cursor.classList.remove('cursor-click'));
-    }
 </script>
 </body>
 </html>
