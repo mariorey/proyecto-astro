@@ -5,13 +5,20 @@ export interface Props {
     title: string;
     description?: string;
     lang?: string;
+    ogImage?: string;
+    canonical?: string;
 }
 
 const {
     title,
     description = 'Diseño de experiencias digitales intuitivas y funcionales.',
     lang = 'es',
+    ogImage = 'https://anaburjack.es/files/logo.png',
+    canonical,
 } = Astro.props;
+
+const canonicalUrl =
+    canonical ?? new URL(Astro.url.pathname, 'https://anaburjack.es').href;
 ---
 
 <!DOCTYPE html>
@@ -20,20 +27,63 @@ const {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
-    <meta property="og:title" content="Ana Burjack | UX/UI Designer" />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Ana Burjack" />
+    <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content="https://anaburjack.es/files/logo.png" />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:locale" content={lang === 'es' ? 'es_ES' : 'en_US'} />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- Theme / UI -->
+    <meta name="theme-color" content="#f2ede6" />
+
     <link rel="icon" type="image/x-icon" href="/files/favicon.ico" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link
             href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,900;1,900&family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400&display=swap"
             rel="stylesheet"
     />
+
+    <!-- Structured data -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'Person',
+        name: 'Ana Burjack',
+        jobTitle: 'UX/UI Designer',
+        url: 'https://anaburjack.es',
+        email: 'mailto:lalaburjack@gmail.com',
+        sameAs: ['https://www.linkedin.com/in/anaburjack-designerux-ui/'],
+        address: { '@type': 'PostalAddress', addressRegion: 'Córdoba · Madrid', addressCountry: 'ES' },
+    })}></script>
+    <script is:inline src="https://www.googletagmanager.com/gtag/js?id=G-05BT7KEH2K"></script>
+    <script is:inline>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-05BT7KEH2K');
+    </script>
     <ViewTransitions />
 </head>
 <body>
 <!-- Scroll progress bar -->
 <div id="progress-bar" aria-hidden="true" transition:persist></div>
+
+<!-- Custom cursor (desktop only, hidden on touch via CSS) -->
+<div class="cursor-ring" id="cursor-ring" aria-hidden="true" transition:persist></div>
 
 <slot />
 
@@ -50,7 +100,6 @@ const {
     }, { passive: true });
 
     /* ── Scroll reveal ─────────────────────────────────────────────
-       Called directly AND via astro:page-load.
        Direct call guards against the race condition where the event
        fires before this module finishes registering its listener.
        The event call handles every subsequent View Transitions swap. */
@@ -69,6 +118,67 @@ const {
 
     initReveal();
     document.addEventListener('astro:page-load', initReveal);
+
+    /* ── Custom cursor ─────────────────────────────────────────────
+       Skips entirely on touch devices (CSS hides .cursor-ring).
+       Uses rAF to interpolate between mouse position and ring
+       position for a subtle magnetic lag. */
+    const mql = window.matchMedia('(hover: none), (pointer: coarse)');
+    const prm = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    if (!mql.matches && !prm.matches) {
+        const ring = document.getElementById('cursor-ring');
+        if (ring) {
+            let mouseX = window.innerWidth / 2;
+            let mouseY = window.innerHeight / 2;
+            let ringX = mouseX;
+            let ringY = mouseY;
+
+            window.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+                if (!ring.classList.contains('is-ready')) {
+                    ring.classList.add('is-ready');
+                }
+            }, { passive: true });
+
+            const lerp = (a, b, n) => (1 - n) * a + n * b;
+
+            function frame() {
+                ringX = lerp(ringX, mouseX, 0.18);
+                ringY = lerp(ringY, mouseY, 0.18);
+                ring.style.transform = `translate3d(${ringX}px, ${ringY}px, 0) translate(-50%, -50%)`;
+                requestAnimationFrame(frame);
+            }
+            frame();
+
+            /* Hover state bindings — re-applied on every page swap */
+            function bindHovers() {
+                const hoverables = document.querySelectorAll(
+                    'a, button, [data-cursor="hover"]'
+                );
+                hoverables.forEach((el) => {
+                    el.addEventListener('mouseenter', () => ring.classList.add('is-hover'));
+                    el.addEventListener('mouseleave', () => ring.classList.remove('is-hover'));
+                });
+
+                const viewers = document.querySelectorAll('[data-cursor="view"]');
+                viewers.forEach((el) => {
+                    el.addEventListener('mouseenter', () => {
+                        ring.classList.add('is-hover');
+                        ring.classList.add('is-view');
+                    });
+                    el.addEventListener('mouseleave', () => {
+                        ring.classList.remove('is-hover');
+                        ring.classList.remove('is-view');
+                    });
+                });
+            }
+
+            bindHovers();
+            document.addEventListener('astro:page-load', bindHovers);
+        }
+    }
 </script>
 </body>
 </html>

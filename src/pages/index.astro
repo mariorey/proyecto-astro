@@ -4,7 +4,11 @@ import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 ---
 
-<BaseLayout title="Ana Burjack — UX/UI Designer" lang="es">
+<BaseLayout
+    title="Ana Burjack — UX/UI Designer"
+    description="Diseñadora UX/UI basada en Córdoba · Madrid. Creo experiencias digitales accesibles, inclusivas y centradas en el usuario."
+    lang="es"
+>
     <Nav lang="es" activePage="home" altHref="/en" />
 
     <!-- HERO -->
@@ -45,9 +49,9 @@ import Footer from '../components/Footer.astro';
 
     <!-- PROJECTS -->
     <div id="projects" class="project-row">
-        <a href="/tedeache" data-reveal="img">
+        <a href="/tedeache" data-reveal="img" data-cursor="view">
             <div class="project-img" data-overlay="Ver Case Study →">
-                <img src="/files/tedeache/cover.png" class="img-placeholder" alt="Tedeache" />
+                <img src="/files/tedeache/cover.png" class="img-placeholder" alt="Portada del case study Tedeache — app móvil para personas con TDAH" />
             </div>
         </a>
         <div class="project-info" data-reveal="info">
@@ -62,9 +66,9 @@ import Footer from '../components/Footer.astro';
     </div>
 
     <div class="project-row reverse">
-        <a href="/agape" data-reveal="img">
+        <a href="/agape" data-reveal="img" data-cursor="view">
             <div class="project-img" data-overlay="Ver Case Study →">
-                <img src="/files/agape/cover-agape.png" class="img-placeholder" alt="Ágape" />
+                <img src="/files/agape/cover-agape.png" class="img-placeholder" alt="Portada del case study Ágape — diseño web para un supermercado online" />
             </div>
         </a>
         <div class="project-info" data-reveal="info">
@@ -79,9 +83,9 @@ import Footer from '../components/Footer.astro';
     </div>
 
     <div class="project-row">
-        <a href="/mentalizt" data-reveal="img">
+        <a href="/mentalizt" data-reveal="img" data-cursor="view">
             <div class="project-img" data-overlay="Ver Case Study →">
-                <img src="/files/mentalizt/cover-2.jpg" class="img-placeholder" alt="MentaliZT" />
+                <img src="/files/mentalizt/cover-2.jpg" class="img-placeholder" alt="Portada del case study MentaliZT — app móvil para bienestar mental y gestión del estrés" />
             </div>
         </a>
         <div class="project-info" data-reveal="info">

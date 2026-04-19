@@ -1,0 +1,27 @@
+---
+export interface Props {
+    label: string;        // "Next project" / "Siguiente proyecto"
+    title: string;        // "Ágape"
+    href: string;         // "/agape"
+    cover: string;        // "/files/agape/cover-agape.png"
+    transitionName?: string; // optional shared-element name for ViewTransitions
+}
+
+const { label, title, href, cover, transitionName } = Astro.props;
+---
+
+<a class="next-project" href={href} data-cursor="view" data-reveal="rise">
+    <span class="next-project-label">{label}</span>
+    <div class="next-project-inner">
+        <h2 class="next-project-title">
+            {title}<span class="next-project-arrow">→</span>
+        </h2>
+        <div class="next-project-cover">
+            {transitionName ? (
+                <img src={cover} alt={title} loading="lazy" transition:name={transitionName} />
+            ) : (
+                <img src={cover} alt={title} loading="lazy" />
+            )}
+        </div>
+    </div>
+</a>

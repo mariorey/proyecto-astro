@@ -2,9 +2,14 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import NextProject from '../components/NextProject.astro';
 ---
 
-<BaseLayout title="Ágape — Ana Burjack" lang="es">
+<BaseLayout
+    title="Ágape — Case Study | Ana Burjack"
+    description="Case study de Ágape: diseño web para un supermercado online enfocado en usabilidad, accesibilidad y una experiencia de compra innovadora."
+    lang="es"
+>
     <Nav lang="es" activePage="projects" altHref="/en/agape" />
 
     <section class="project-hero">
@@ -12,7 +17,7 @@ import Footer from '../components/Footer.astro';
         <h1 class="project-hero-title">Ágape</h1>
         <span class="project-hero-subtitle">Web para cadenas de supermercados</span>
         <div class="project-hero-img">
-            <img src="/files/agape/cover-agape.png" alt="Ágape" transition:name="cover-agape" />
+            <img src="/files/agape/cover-agape.png" alt="Ágape — portada del case study" transition:name="cover-agape" />
         </div>
     </section>
 
@@ -266,6 +271,14 @@ import Footer from '../components/Footer.astro';
             <img src="/files/ui-agape-4.png" alt="UI Overview Ágape" />
         </div>
     </section>
+
+    <NextProject
+        label="Siguiente proyecto"
+        title="MentaliZT"
+        href="/mentalizt"
+        cover="/files/mentalizt/cover.png"
+        transitionName="cover-mentalizt"
+    />
 
     <Footer />
 </BaseLayout>
