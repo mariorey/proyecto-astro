@@ -2,9 +2,14 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import NextProject from '../components/NextProject.astro';
 ---
 
-<BaseLayout title="MentaliZT — Ana Burjack" lang="es">
+<BaseLayout
+    title="MentaliZT — Case Study | Ana Burjack"
+    description="Case study de MentaliZT: app móvil para mejorar la salud mental y reducir los efectos del estrés diseñada en un Design Sprint."
+    lang="es"
+>
     <Nav lang="es" activePage="projects" altHref="/en/mentalizt" />
 
     <section class="project-hero">
@@ -12,7 +17,7 @@ import Footer from '../components/Footer.astro';
         <h1 class="project-hero-title">MentaliZT</h1>
         <span class="project-hero-subtitle">App para mejorar la salud mental y reducir los efectos del estrés.</span>
         <div class="project-hero-img">
-            <img src="/files/mentalizt/cover.png" alt="MentaliZT" transition:name="cover-mentalizt" />
+            <img src="/files/mentalizt/cover.png" alt="MentaliZT — portada del case study" transition:name="cover-mentalizt" />
         </div>
     </section>
 
@@ -51,6 +56,14 @@ import Footer from '../components/Footer.astro';
         <div class="project-hero-img"><img src="/files/mentalizt/ui-4.png" alt="UI" /></div>
         <div class="project-hero-img"><img src="/files/mentalizt/ui-5.png" alt="UI" /></div>
     </section>
+
+    <NextProject
+        label="Siguiente proyecto"
+        title="Tedeache"
+        href="/tedeache"
+        cover="/files/tedeache/cover.png"
+        transitionName="cover-tedeache"
+    />
 
     <Footer />
 </BaseLayout>

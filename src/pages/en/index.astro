@@ -2,9 +2,14 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Nav from '../../components/Nav.astro';
 import Footer from '../../components/Footer.astro';
+import Marquee from '../../components/Marquee.astro';
 ---
 
-<BaseLayout title="Ana Burjack — UX/UI Designer" lang="en" description="Designing intuitive and functional digital experiences.">
+<BaseLayout
+    title="Ana Burjack — UX/UI Designer"
+    lang="en"
+    description="UX/UI Designer based in Córdoba · Madrid. I craft accessible, inclusive and user-centred digital experiences."
+>
     <Nav lang="en" activePage="home" altHref="/" />
 
     <!-- HERO -->
@@ -43,11 +48,21 @@ import Footer from '../../components/Footer.astro';
         </div>
     </section>
 
+    <!-- MARQUEE TICKER -->
+    <Marquee items={[
+        'Available for work',
+        'UX/UI Design',
+        'Based in Córdoba · Madrid',
+        'Accessible · Inclusive',
+        'Design Thinking',
+        'Figma · FigJam',
+    ]} />
+
     <!-- PROJECTS -->
     <div id="projects" class="project-row">
-        <a href="/en/tedeache-prototype" data-reveal="img">
+        <a href="/en/tedeache-prototype" data-reveal="img" data-cursor="view">
             <div class="project-img" data-overlay="View Case Study →">
-                <img src="/files/tedeache/cover.png" class="img-placeholder" alt="Tedeache" />
+                <img src="/files/tedeache/cover.png" class="img-placeholder" alt="Case study cover — Tedeache, mobile app for people with ADHD" />
             </div>
         </a>
         <div class="project-info" data-reveal="info">
@@ -62,9 +77,9 @@ import Footer from '../../components/Footer.astro';
     </div>
 
     <div class="project-row reverse">
-        <a href="/en/agape" data-reveal="img">
+        <a href="/en/agape" data-reveal="img" data-cursor="view">
             <div class="project-img" data-overlay="View Case Study →">
-                <img src="/files/agape/cover-agape.png" class="img-placeholder" alt="Ágape" />
+                <img src="/files/agape/cover-agape.png" class="img-placeholder" alt="Case study cover — Ágape, web design for an online supermarket" />
             </div>
         </a>
         <div class="project-info" data-reveal="info">
@@ -79,9 +94,9 @@ import Footer from '../../components/Footer.astro';
     </div>
 
     <div class="project-row">
-        <a href="/en/mentalizt" data-reveal="img">
+        <a href="/en/mentalizt" data-reveal="img" data-cursor="view">
             <div class="project-img" data-overlay="View Case Study →">
-                <img src="/files/mentalizt/cover-2.jpg" class="img-placeholder" alt="MentaliZT" />
+                <img src="/files/mentalizt/cover-2.jpg" class="img-placeholder" alt="Case study cover — MentaliZT, mobile app for mental wellbeing and stress management" />
             </div>
         </a>
         <div class="project-info" data-reveal="info">

@@ -2,9 +2,14 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import NextProject from '../components/NextProject.astro';
 ---
 
-<BaseLayout title="Tedeache — Ana Burjack" lang="es">
+<BaseLayout
+    title="Tedeache — Case Study | Ana Burjack"
+    description="Case study completo de Tedeache: app móvil que ayuda a personas con TDAH a organizarse, concentrarse y gestionar su día a día."
+    lang="es"
+>
     <Nav lang="es" activePage="projects" altHref="/en/tedeache" />
 
     <section class="project-hero">
@@ -12,7 +17,7 @@ import Footer from '../components/Footer.astro';
         <h1 class="project-hero-title">Tedeache</h1>
         <span class="project-hero-subtitle">App de apoyo para personas con TDAH</span>
         <div class="project-hero-img">
-            <img src="/files/tedeache/cover.png" alt="Tedeache" transition:name="cover-tedeache" />
+            <img src="/files/tedeache/cover.png" alt="Tedeache — portada del case study" transition:name="cover-tedeache" />
         </div>
     </section>
 
@@ -266,6 +271,14 @@ import Footer from '../components/Footer.astro';
             </div>
         </div>
     </section>
+
+    <NextProject
+        label="Siguiente proyecto"
+        title="Ágape"
+        href="/agape"
+        cover="/files/agape/cover-agape.png"
+        transitionName="cover-agape"
+    />
 
     <Footer />
 </BaseLayout>

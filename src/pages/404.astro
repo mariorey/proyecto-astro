@@ -1,0 +1,57 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout
+    title="404 — Ana Burjack"
+    description="Página no encontrada · Page not found"
+    lang="es"
+>
+    <Nav lang="es" altHref="/en" />
+
+    <section class="not-found" data-reveal="rise">
+        <p class="not-found-code"><em>404</em></p>
+
+        <h1 class="not-found-title" data-lang="es">Página no encontrada</h1>
+        <h1 class="not-found-title" data-lang="en" hidden>Page not found</h1>
+
+        <p class="not-found-sub" data-lang="es">
+            Parece que el enlace que buscas se ha perdido entre wireframes.
+            Vuelve al inicio y descubre los proyectos desde allí.
+        </p>
+        <p class="not-found-sub" data-lang="en" hidden>
+            Looks like the link you're after got lost somewhere between wireframes.
+            Head back home and explore the projects from there.
+        </p>
+
+        <a class="not-found-cta" href="/" data-lang="es">Volver al inicio</a>
+        <a class="not-found-cta" href="/en" data-lang="en" hidden>Back home</a>
+    </section>
+
+    <Footer />
+</BaseLayout>
+
+<script is:inline>
+    // Prefer English if the browser prefers English and the visitor
+    // didn't explicitly navigate inside /en/ themselves.
+    (function () {
+        try {
+            var wantsEn =
+                typeof navigator !== 'undefined' &&
+                Array.isArray(navigator.languages) &&
+                navigator.languages.some(function (l) {
+                    return String(l).toLowerCase().startsWith('en');
+                });
+            if (!wantsEn) return;
+            document.documentElement.setAttribute('lang', 'en');
+            document
+                .querySelectorAll('[data-lang="es"]')
+                .forEach(function (el) { el.hidden = true; });
+            document
+                .querySelectorAll('[data-lang="en"]')
+                .forEach(function (el) { el.hidden = false; });
+        } catch (_) {}
+    })();
+</script>
