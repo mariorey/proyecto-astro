@@ -66,7 +66,16 @@ const canonicalUrl =
         sameAs: ['https://www.linkedin.com/in/anaburjack-designerux-ui/'],
         address: { '@type': 'PostalAddress', addressRegion: 'Córdoba · Madrid', addressCountry: 'ES' },
     })}></script>
+    <script is:inline src="https://www.googletagmanager.com/gtag/js?id=G-05BT7KEH2K"></script>
+    <script is:inline>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
 
+        gtag('config', 'G-05BT7KEH2K');
+    </script>
     <ViewTransitions />
 </head>
 <body>
