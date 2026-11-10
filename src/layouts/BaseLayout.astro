@@ -13,12 +13,12 @@ const {
     title,
     description = 'Diseño de experiencias digitales intuitivas y funcionales.',
     lang = 'es',
-    ogImage = 'https://anaburjack.es/files/logo.png',
+    ogImage = 'https://ux.anaburjack.es/files/logo.png',
     canonical,
 } = Astro.props;
 
 const canonicalUrl =
-    canonical ?? new URL(Astro.url.pathname, 'https://anaburjack.es').href;
+    canonical ?? new URL(Astro.url.pathname, 'https://ux.anaburjack.es').href;
 ---
 
 <!DOCTYPE html>
@@ -61,7 +61,7 @@ const canonicalUrl =
         '@type': 'Person',
         name: 'Ana Burjack',
         jobTitle: 'UX/UI Designer',
-        url: 'https://anaburjack.es',
+        url: 'https://ux.anaburjack.es',
         email: 'mailto:lalaburjack@gmail.com',
         sameAs: ['https://www.linkedin.com/in/anaburjack-designerux-ui/'],
         address: { '@type': 'PostalAddress', addressRegion: 'Córdoba · Madrid', addressCountry: 'ES' },
